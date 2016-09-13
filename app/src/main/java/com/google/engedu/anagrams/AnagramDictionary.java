@@ -1,5 +1,4 @@
 package com.google.engedu.anagrams;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,7 +11,6 @@ import java.util.Random;
 import java.util.HashSet;
 import android.util.Log;
 public class AnagramDictionary {
-
     private static final int MIN_NUM_ANAGRAMS = 5;
     private static final int DEFAULT_WORD_LENGTH = 3;
     private static final int MAX_WORD_LENGTH = 7;
@@ -30,15 +28,9 @@ public class AnagramDictionary {
             String word = line.trim();
             wordlist.add(word);
             wordset.add(word);
-            ArrayList<String> tempWord1 = new ArrayList<String>();
-
             ArrayList<String> temp_words2 = new ArrayList<String>();
-            // l takes the  size of the current word.
-            // then we will use this 'l' as key
-            //to get all possible words of that size
+            ArrayList<String> tempWord1 = new ArrayList<String>();
             int l = word.length();
-
-            //if-else works similar to earlier concept of hashmap letterToWord
             if(sizeToWord.containsKey(l))
             {
                 temp_words2 = sizeToWord.get(l);
@@ -55,9 +47,10 @@ public class AnagramDictionary {
             if(lettersToWord.containsKey(sortWord)){
                 tempWord1=lettersToWord.get(sortWord);
                 tempWord1.add(word);
+                lettersToWord.put(sortWord,tempWord1);
             }
             else{
-                tempWord1.add(sortWord);
+                tempWord1.add(word);
                 lettersToWord.put(sortWord,tempWord1);
             }
 
